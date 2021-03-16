@@ -57,15 +57,36 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="033-tz-Kvo">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qXx-vi-clA"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qXx-vi-clA">
+                            <connections>
+                                <segue destination="E2V-U6-xja" kind="show" id="LEI-oc-jPD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="5qR-df-pPt" id="jMv-3z-qMm"/>
+                        <segue destination="E2V-U6-xja" kind="show" identifier="cellSegue" id="f1Y-aP-Cyv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1050.7246376811595" y="138.61607142857142"/>
+        </scene>
+        <!--Input View Controller-->
+        <scene sceneID="TU8-9x-Q3y">
+            <objects>
+                <viewController id="E2V-U6-xja" customClass="InputViewController" customModule="taskapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Spb-Q5-77V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="8LE-5c-Ijm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="m07-Wf-9W6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Gr-9w-FDd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1952" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1nF-QM-cy4">
@@ -86,6 +107,9 @@
             <point key="canvasLocation" x="140.57971014492756" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="f1Y-aP-Cyv"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

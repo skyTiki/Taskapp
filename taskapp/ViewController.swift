@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didselect", indexPath.row)
+        performSegue(withIdentifier: "cellSegue", sender: nil)
     }
     
     // セルのモードを選択する。（削除モード、追加モード、設定なし）
