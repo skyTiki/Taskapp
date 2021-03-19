@@ -67,22 +67,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if editingStyle == .delete {
             let task = self.taskArray[indexPath.row]
             
+            let center = UNUserNotificationCenter.current()
+            center.removePendingNotificationRequests(withIdentifiers: [String(task.id)])
+            
             try! realm.write{
                 self.realm.delete(task)
                 tableView.deleteRows(at: [indexPath], with: .fade)
-                
-                let center = UNUserNotificationCenter.current()
-                center.removePendingNotificationRequests(withIdentifiers: [String(task.id)])
-                
-                // 未通知のローカル通知を出力
-                center.getPendingNotificationRequests { requests in
-                    requests.forEach {
-                        print("--削除後--")
-                        print($0)
-                        print("--------")
-                    }
+            }
+            // 未通知のローカル通知を出力
+            center.getPendingNotificationRequests { requests in
+                requests.forEach {
+                    print("--削除後--")
+                    print($0)
+                    print("--------")
                 }
-                
             }
         }
     }
