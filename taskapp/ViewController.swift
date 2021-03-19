@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -64,9 +65,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 削除された時の処理
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let task = self.taskArray[indexPath.row]
+            
             try! realm.write{
-                self.realm.delete(self.taskArray[indexPath.row])
+                self.realm.delete(task)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                let center = UNUserNotificationCenter.current()
+                center.removePendingNotificationRequests(withIdentifiers: [String(task.id)])
+                
+                // 未通知のローカル通知を出力
+                center.getPendingNotificationRequests { requests in
+                    requests.forEach {
+                        print("--削除後--")
+                        print($0)
+                        print("--------")
+                    }
+                }
+                
             }
         }
     }

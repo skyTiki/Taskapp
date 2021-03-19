@@ -23,9 +23,9 @@ class Task: Object {
     }
     
     func getTitle() -> String {
-        return title == "" ? title : "(タイトルなし)"
+        return title == "" ?  "(タイトルなし)" : title
     }
     func getContents() -> String {
-        return contents == "" ? contents : "(内容なし)"
+        return contents == "" ? "(内容なし)" : contents
     }
 }
