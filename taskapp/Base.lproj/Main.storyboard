@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5qR-df-pPt">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="kVt-RO-yWm" detailTextLabel="Rnp-94-APU" style="IBUITableViewCellStyleSubtitle" id="t49-UA-iF6">
@@ -46,14 +46,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カテゴリ検索" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZY1-ZN-1h1">
+                                <rect key="frame" x="5" y="93" width="404" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5qR-df-pPt" secondAttribute="trailing" id="81O-Ng-i9z"/>
-                            <constraint firstItem="5qR-df-pPt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="C3V-h2-QYE"/>
                             <constraint firstItem="5qR-df-pPt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FcR-Qv-EHm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5qR-df-pPt" secondAttribute="bottom" id="c4m-hh-zPx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZY1-ZN-1h1" secondAttribute="trailing" constant="5" id="cIN-Hw-bdp"/>
+                            <constraint firstItem="ZY1-ZN-1h1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="cRc-IN-8Pw"/>
+                            <constraint firstItem="5qR-df-pPt" firstAttribute="top" secondItem="ZY1-ZN-1h1" secondAttribute="bottom" constant="5" id="pUW-zv-Kye"/>
+                            <constraint firstItem="ZY1-ZN-1h1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="vJs-MS-W4K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="033-tz-Kvo">
@@ -64,6 +72,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categorySearchTextField" destination="8bC-Xf-vdC" id="9al-0X-diS"/>
                         <outlet property="tableView" destination="5qR-df-pPt" id="jMv-3z-qMm"/>
                         <segue destination="E2V-U6-xja" kind="show" identifier="cellSegue" id="f1Y-aP-Cyv"/>
                     </connections>

@@ -12,6 +12,7 @@ import UserNotifications
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var categorySearchTextField: UIView!
     
     // Realmのインスタンス作成
     let realm = try! Realm()
