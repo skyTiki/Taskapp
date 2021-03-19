@@ -6,26 +6,41 @@
 //
 
 import UIKit
+import RealmSwift
 
 class InputViewController: UIViewController {
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var task: Task!
     
+    let realm = try! Realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let tapGesture: UITapGestureRecognizer = .init(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        
+        textField.text = task.title
+        textView.text = task.contents
+        datePicker.date = task.date
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
-    */
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        try! realm.write {
+            task.title = textField.text!
+            task.contents = textView.text!
+            task.date = datePicker.date
+            
+            realm.add(task, update: .modified)
+        }
+    }
 }

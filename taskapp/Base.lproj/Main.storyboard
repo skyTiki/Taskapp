@@ -136,6 +136,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="m07-Wf-9W6"/>
+                    <connections>
+                        <outlet property="datePicker" destination="NH5-bj-4cA" id="Cql-je-4xq"/>
+                        <outlet property="textField" destination="ogn-07-Rpg" id="VcS-h7-jU4"/>
+                        <outlet property="textView" destination="QPY-xO-oW2" id="Cfp-XN-mz0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Gr-9w-FDd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
