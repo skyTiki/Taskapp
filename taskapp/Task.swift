@@ -21,4 +21,11 @@ class Task: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    func getTitle() -> String {
+        return title == "" ? title : "(タイトルなし)"
+    }
+    func getContents() -> String {
+        return contents == "" ? contents : "(内容なし)"
+    }
 }
