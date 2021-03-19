@@ -27,11 +27,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return taskArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let task = taskArray[indexPath.row]
+        
+        cell.textLabel?.text = task.title
+        
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        cell.detailTextLabel?.text = formatter.string(from: task.date)
+        
         return cell
     }
     
@@ -46,7 +57,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // 削除された時の処理
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("delete", indexPath.row)
+        if editingStyle == .delete {
+            try! realm.write{
+                self.realm.delete(self.taskArray[indexPath.row])
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
     }
 }
 
