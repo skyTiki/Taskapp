@@ -101,16 +101,16 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUg-zm-Hfi">
-                                <rect key="frame" x="10" y="173" width="394" height="21"/>
+                                <rect key="frame" x="10" y="334" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QPY-xO-oW2">
-                                <rect key="frame" x="10" y="204" width="394" height="120"/>
+                                <rect key="frame" x="10" y="365" width="394" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="ncl-xN-yyb"/>
+                                    <constraint firstAttribute="height" constant="120" id="8Or-Qh-iUE"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -118,30 +118,54 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="NH5-bj-4cA">
-                                <rect key="frame" x="10" y="334" width="394" height="120"/>
+                                <rect key="frame" x="10" y="495" width="394" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="aji-pY-7Ue"/>
+                                    <constraint firstAttribute="height" constant="120" id="mHL-Ad-vct"/>
                                 </constraints>
                             </datePicker>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ri-Er-DQ4">
+                                <rect key="frame" x="10" y="204" width="394" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Co1-9D-CuK"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVN-F9-h1X">
+                                <rect key="frame" x="10" y="173" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIO-fT-UXE">
+                                <rect key="frame" x="346" y="173" width="58" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="新規追加"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8LE-5c-Ijm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ZUg-zm-Hfi" firstAttribute="top" secondItem="ogn-07-Rpg" secondAttribute="bottom" constant="10" id="0ey-eI-1Fd"/>
-                            <constraint firstItem="NH5-bj-4cA" firstAttribute="top" secondItem="QPY-xO-oW2" secondAttribute="bottom" constant="10" id="2pI-ZR-qHS"/>
-                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="ogn-07-Rpg" secondAttribute="trailing" constant="10" id="DDN-BH-01X"/>
-                            <constraint firstItem="QPY-xO-oW2" firstAttribute="top" secondItem="ZUg-zm-Hfi" secondAttribute="bottom" constant="10" id="Dr9-BD-omH"/>
-                            <constraint firstItem="ogn-07-Rpg" firstAttribute="top" secondItem="cC2-m9-jNB" secondAttribute="bottom" constant="10" id="FYv-l4-CRr"/>
-                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="cC2-m9-jNB" secondAttribute="trailing" constant="10" id="GLm-sv-VOw"/>
-                            <constraint firstItem="cC2-m9-jNB" firstAttribute="top" secondItem="8LE-5c-Ijm" secondAttribute="top" constant="10" id="RZu-tV-ieB"/>
-                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="QPY-xO-oW2" secondAttribute="trailing" constant="10" id="ZsP-JV-XVS"/>
-                            <constraint firstItem="QPY-xO-oW2" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="dyE-Vu-1xl"/>
-                            <constraint firstItem="NH5-bj-4cA" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="e71-Wz-Jmr"/>
-                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="NH5-bj-4cA" secondAttribute="trailing" constant="10" id="nOl-Ep-An9"/>
-                            <constraint firstItem="cC2-m9-jNB" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="pSA-du-zDx"/>
-                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="ZUg-zm-Hfi" secondAttribute="trailing" constant="10" id="tH1-xr-gMN"/>
-                            <constraint firstItem="ZUg-zm-Hfi" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="uk5-9S-XHw"/>
-                            <constraint firstItem="ogn-07-Rpg" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="zIZ-IO-YcS"/>
+                            <constraint firstItem="2ri-Er-DQ4" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="3QZ-ab-YW0"/>
+                            <constraint firstItem="hVN-F9-h1X" firstAttribute="top" secondItem="ogn-07-Rpg" secondAttribute="bottom" constant="10" id="5T1-Bl-fx1"/>
+                            <constraint firstItem="ogn-07-Rpg" firstAttribute="top" secondItem="cC2-m9-jNB" secondAttribute="bottom" constant="10" id="5xp-em-5W5"/>
+                            <constraint firstItem="NH5-bj-4cA" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="FdL-Jl-dZR"/>
+                            <constraint firstItem="NH5-bj-4cA" firstAttribute="top" secondItem="QPY-xO-oW2" secondAttribute="bottom" constant="10" id="Hdm-mj-xCg"/>
+                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="ZUg-zm-Hfi" secondAttribute="trailing" constant="10" id="JsR-fR-8q7"/>
+                            <constraint firstItem="QPY-xO-oW2" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="Qlq-0m-DKb"/>
+                            <constraint firstItem="2ri-Er-DQ4" firstAttribute="top" secondItem="hVN-F9-h1X" secondAttribute="bottom" constant="10" id="R0q-bO-9EC"/>
+                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="QPY-xO-oW2" secondAttribute="trailing" constant="10" id="Y13-0B-cjW"/>
+                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="pIO-fT-UXE" secondAttribute="trailing" constant="10" id="agx-gm-GCF"/>
+                            <constraint firstItem="ogn-07-Rpg" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="bS1-bv-GgF"/>
+                            <constraint firstItem="2ri-Er-DQ4" firstAttribute="top" secondItem="pIO-fT-UXE" secondAttribute="bottom" constant="2" id="bw8-uM-uuR"/>
+                            <constraint firstItem="QPY-xO-oW2" firstAttribute="top" secondItem="ZUg-zm-Hfi" secondAttribute="bottom" constant="10" id="fl3-QS-abN"/>
+                            <constraint firstItem="hVN-F9-h1X" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="lFq-zZ-or9"/>
+                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="cC2-m9-jNB" secondAttribute="trailing" constant="10" id="mUD-oh-yM2"/>
+                            <constraint firstItem="ZUg-zm-Hfi" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="nnC-7M-kuc"/>
+                            <constraint firstItem="ZUg-zm-Hfi" firstAttribute="top" secondItem="2ri-Er-DQ4" secondAttribute="bottom" constant="10" id="oOF-5u-oV3"/>
+                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="2ri-Er-DQ4" secondAttribute="trailing" constant="10" id="qhv-bY-qlh"/>
+                            <constraint firstItem="cC2-m9-jNB" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="v97-aW-Cnc"/>
+                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="NH5-bj-4cA" secondAttribute="trailing" constant="10" id="w86-ON-dRl"/>
+                            <constraint firstItem="cC2-m9-jNB" firstAttribute="top" secondItem="8LE-5c-Ijm" secondAttribute="top" constant="10" id="wVY-Kr-AJm"/>
+                            <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="ogn-07-Rpg" secondAttribute="trailing" constant="10" id="yRK-Ee-cu0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="m07-Wf-9W6"/>
