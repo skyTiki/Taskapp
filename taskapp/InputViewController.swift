@@ -8,7 +8,9 @@
 import UIKit
 
 class InputViewController: UIViewController {
-
+    
+    var task: Task!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
