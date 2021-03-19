@@ -15,6 +15,7 @@
 		A1BD2CBB260047D300DF3843 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1BD2CB9260047D300DF3843 /* LaunchScreen.storyboard */; };
 		A1BD2CC52600747000DF3843 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD2CC42600747000DF3843 /* InputViewController.swift */; };
 		A1BD2CCD2600878500DF3843 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD2CCC2600878500DF3843 /* Task.swift */; };
+		A1F685CA2604822800F28606 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F685C92604822700F28606 /* Category.swift */; };
 		B095DD9D52CF06BD13BB27DF /* Pods_taskapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0199A699575E92F49A85ED0B /* Pods_taskapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		A1BD2CBC260047D300DF3843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1BD2CC42600747000DF3843 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		A1BD2CCC2600878500DF3843 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		A1F685C92604822700F28606 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				A1BD2CB2260047D100DF3843 /* ViewController.swift */,
 				A1BD2CC42600747000DF3843 /* InputViewController.swift */,
 				A1BD2CCC2600878500DF3843 /* Task.swift */,
+				A1F685C92604822700F28606 /* Category.swift */,
 				A1BD2CB4260047D100DF3843 /* Main.storyboard */,
 				A1BD2CB7260047D300DF3843 /* Assets.xcassets */,
 				A1BD2CB9260047D300DF3843 /* LaunchScreen.storyboard */,
@@ -216,6 +219,7 @@
 				A1BD2CB1260047D100DF3843 /* SceneDelegate.swift in Sources */,
 				A1BD2CC52600747000DF3843 /* InputViewController.swift in Sources */,
 				A1BD2CCD2600878500DF3843 /* Task.swift in Sources */,
+				A1F685CA2604822800F28606 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
