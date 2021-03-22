@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var categorySearchTextField: UIView!
@@ -39,6 +39,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         view.endEditing(true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let inputViewController = segue.destination as! InputViewController
+        
+        if segue.identifier == "cellSegue" {
+            let indexPath = tableView.indexPathForSelectedRow
+            inputViewController.task = taskArray[indexPath!.row]
+        } else {
+            let task = Task()
+            
+            let allTasks = realm.objects(Task.self)
+            if allTasks.count != 0 {
+                task.id = allTasks.max(ofProperty: "id")! + 1
+            }
+            
+            inputViewController.task = task
+        }
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     // TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,24 +110,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("--------")
                 }
             }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let inputViewController = segue.destination as! InputViewController
-        
-        if segue.identifier == "cellSegue" {
-            let indexPath = tableView.indexPathForSelectedRow
-            inputViewController.task = taskArray[indexPath!.row]
-        } else {
-            let task = Task()
-            
-            let allTasks = realm.objects(Task.self)
-            if allTasks.count != 0 {
-                task.id = allTasks.max(ofProperty: "id")! + 1
-            }
-            
-            inputViewController.task = task
         }
     }
 }

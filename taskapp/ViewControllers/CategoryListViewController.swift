@@ -37,6 +37,7 @@ class CategoryListViewController: UIViewController {
         
     }
     
+    // 設定ボタンタップ
     @IBAction func tappedSetCategory(_ sender: Any) {
         dismiss(animated: true, completion: {
             self.delegate?.setCategoryList(self.selectedCategoryList)
@@ -55,6 +56,7 @@ class CategoryListViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            // 入力されたテキストをRealmに追加
             if let categoryName = alertTextField?.text {
                 let category: Category = .init()
                 try! self.realm.write {
@@ -93,6 +95,7 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         guard let selectedCategory: Category = categoryList.first(where: { $0.name == cell.textLabel?.text }) else { return }
         
+        // タップされた時にチェックマークをつける
         if cell.accessoryType == .none {
             cell.accessoryType = .checkmark
             selectedCategoryList.append(selectedCategory)

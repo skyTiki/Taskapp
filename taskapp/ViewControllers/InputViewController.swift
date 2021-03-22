@@ -21,6 +21,7 @@ class InputViewController: UIViewController {
     
     var task: Task!
     var categoryList: [Category]? {
+        // カテゴリ一覧画面から選択された内容を画面に反映させる
         didSet {
             if let categoryList = categoryList {
                 categoryList.forEach({ category in
@@ -42,10 +43,19 @@ class InputViewController: UIViewController {
         let tapGesture: UITapGestureRecognizer = .init(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
         
+        setTaskData()
+        modifyUI()
+        
+    }
+    
+    private func setTaskData() {
         textField.text = task.title
         textView.text = task.contents
         datePicker.date = task.date
         
+    }
+    
+    private func modifyUI() {
         // UI更新
         textView.layer.borderColor = UIColor.lightGray.cgColor
         addCategoryButton.layer.borderColor = addCategoryButton.tintColor.cgColor
@@ -59,6 +69,7 @@ class InputViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        // Taskを書き込む
         try! realm.write {
             task.title = textField.text!
             task.contents = textView.text!
@@ -106,6 +117,8 @@ class InputViewController: UIViewController {
         }
         
     }
+    
+    // カテゴリ一覧画面に遷移
     @IBAction func tappedAddCategoryButton(_ sender: Any) {
         performSegue(withIdentifier: "categorySegue", sender: nil)
     }
@@ -115,6 +128,7 @@ class InputViewController: UIViewController {
         categoryVC.delegate = self
     }
 }
+// デリゲート（選択されたカテゴリ一覧を取得）
 extension InputViewController: CategoryListViewControllerDelegate {
     func setCategoryList(_ categoryList: [Category]) {
         self.categoryList = categoryList
