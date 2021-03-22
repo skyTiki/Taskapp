@@ -11,6 +11,7 @@ import RealmSwift
 class CategoryListViewController: UIViewController {
 
     @IBOutlet weak var categoryTableView: UITableView!
+    @IBOutlet weak var categoryAddView: UIView!
     
     // Realmから読み取り
     let realm = try! Realm()
@@ -28,6 +29,46 @@ class CategoryListViewController: UIViewController {
         categoryTableView.dataSource = self
         
     }
+    
+    @IBAction func tappedSetCategory(_ sender: Any) {
+        dismiss(animated: true, completion: {
+            
+        })
+    }
+    
+    // カテゴリ追加ボタン　（アラート機能を使用してカテゴリ追加する）
+    @IBAction func tappedAddCategory(_ sender: Any) {
+        
+        var alertTextField: UITextField?
+        
+        let alert = UIAlertController(title: "新規カテゴリ追加", message: "新規追加するカテゴリ名を入力してください。", preferredStyle: .alert)
+        alert.addTextField { textField in
+            alertTextField = textField
+        }
+        
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            if let categoryName = alertTextField?.text {
+                let category: Category = .init()
+                try! self.realm.write {
+                    category.name = categoryName
+                    if self.categoryList.count == 0 {
+                        category.id = 0
+                    } else {
+                        category.id = self.categoryList.max(ofProperty: "id")! + 1
+                    }
+                    self.realm.add(category)
+                    
+                    self.categoryTableView.reloadData()
+                }
+            }
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+ 
+    }
+    
+    
 }
 
 extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -56,6 +97,21 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
         tableView.deselectRow(at: indexPath, animated: true)
         
         print(selectedCategoryList)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let category = categoryList[indexPath.row]
+            
+            try! realm.write {
+                realm.delete(category)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
     }
     
 }

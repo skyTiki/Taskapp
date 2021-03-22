@@ -229,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="esT-V0-3A6">
-                                <rect key="frame" x="0.0" y="40" width="414" height="748"/>
+                                <rect key="frame" x="0.0" y="40" width="414" height="738"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" textLabel="gk4-7L-c2v" style="IBUITableViewCellStyleDefault" id="r6o-9I-MSY">
@@ -255,10 +255,16 @@
                                 <rect key="frame" x="373" y="10" width="31" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="設定"/>
+                                <connections>
+                                    <action selector="tappedSetCategory:" destination="Xj3-f7-Tpl" eventType="touchUpInside" id="siV-dh-K3g"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7l-Rc-Ax1">
-                                <rect key="frame" x="373" y="788" width="31" height="30"/>
+                                <rect key="frame" x="373" y="778" width="31" height="30"/>
                                 <state key="normal" title="追加"/>
+                                <connections>
+                                    <action selector="tappedAddCategory:" destination="Xj3-f7-Tpl" eventType="touchUpInside" id="7Tu-fy-4Qq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hAv-dW-ATU"/>
@@ -267,7 +273,7 @@
                             <constraint firstItem="hAv-dW-ATU" firstAttribute="trailing" secondItem="sfo-sG-A6I" secondAttribute="trailing" constant="10" id="6eo-md-jP9"/>
                             <constraint firstItem="sfo-sG-A6I" firstAttribute="top" secondItem="hAv-dW-ATU" secondAttribute="top" constant="10" id="6gF-bs-q7d"/>
                             <constraint firstItem="M7l-Rc-Ax1" firstAttribute="top" secondItem="esT-V0-3A6" secondAttribute="bottom" id="ELH-AL-n4w"/>
-                            <constraint firstItem="M7l-Rc-Ax1" firstAttribute="bottom" secondItem="hAv-dW-ATU" secondAttribute="bottom" constant="10" id="F3W-3c-3ER"/>
+                            <constraint firstItem="M7l-Rc-Ax1" firstAttribute="bottom" secondItem="hAv-dW-ATU" secondAttribute="bottom" id="F3W-3c-3ER"/>
                             <constraint firstItem="esT-V0-3A6" firstAttribute="leading" secondItem="hAv-dW-ATU" secondAttribute="leading" id="FGR-fo-OEX"/>
                             <constraint firstItem="esT-V0-3A6" firstAttribute="top" secondItem="sfo-sG-A6I" secondAttribute="bottom" id="Fqm-Xa-vbi"/>
                             <constraint firstItem="hAv-dW-ATU" firstAttribute="trailing" secondItem="M7l-Rc-Ax1" secondAttribute="trailing" constant="10" id="OKm-tC-nnH"/>
@@ -280,7 +286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2C-8r-Cwy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769.5652173913045" y="138.61607142857142"/>
+            <point key="canvasLocation" x="2766.666666666667" y="137.94642857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1nF-QM-cy4">
