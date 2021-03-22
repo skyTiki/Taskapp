@@ -16,6 +16,7 @@
 		A1BD2CC52600747000DF3843 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD2CC42600747000DF3843 /* InputViewController.swift */; };
 		A1BD2CCD2600878500DF3843 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD2CCC2600878500DF3843 /* Task.swift */; };
 		A1F685CA2604822800F28606 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F685C92604822700F28606 /* Category.swift */; };
+		A1F685CD2608334000F28606 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F685CC2608334000F28606 /* CategoryListViewController.swift */; };
 		B095DD9D52CF06BD13BB27DF /* Pods_taskapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0199A699575E92F49A85ED0B /* Pods_taskapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		A1BD2CC42600747000DF3843 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		A1BD2CCC2600878500DF3843 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A1F685C92604822700F28606 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A1F685CC2608334000F28606 /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,16 +82,33 @@
 			children = (
 				A1BD2CAE260047D100DF3843 /* AppDelegate.swift */,
 				A1BD2CB0260047D100DF3843 /* SceneDelegate.swift */,
-				A1BD2CB2260047D100DF3843 /* ViewController.swift */,
-				A1BD2CC42600747000DF3843 /* InputViewController.swift */,
-				A1BD2CCC2600878500DF3843 /* Task.swift */,
-				A1F685C92604822700F28606 /* Category.swift */,
-				A1BD2CB4260047D100DF3843 /* Main.storyboard */,
-				A1BD2CB7260047D300DF3843 /* Assets.xcassets */,
 				A1BD2CB9260047D300DF3843 /* LaunchScreen.storyboard */,
+				A1BD2CB4260047D100DF3843 /* Main.storyboard */,
+				A1F685CF2608336300F28606 /* ViewControllers */,
+				A1F685D02608337D00F28606 /* Models */,
+				A1BD2CB7260047D300DF3843 /* Assets.xcassets */,
 				A1BD2CBC260047D300DF3843 /* Info.plist */,
 			);
 			path = taskapp;
+			sourceTree = "<group>";
+		};
+		A1F685CF2608336300F28606 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A1BD2CB2260047D100DF3843 /* ViewController.swift */,
+				A1BD2CC42600747000DF3843 /* InputViewController.swift */,
+				A1F685CC2608334000F28606 /* CategoryListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A1F685D02608337D00F28606 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1BD2CCC2600878500DF3843 /* Task.swift */,
+				A1F685C92604822700F28606 /* Category.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FD149CBEFD4F23DA2F7F2540 /* Frameworks */ = {
@@ -215,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1BD2CB3260047D100DF3843 /* ViewController.swift in Sources */,
+				A1F685CD2608334000F28606 /* CategoryListViewController.swift in Sources */,
 				A1BD2CAF260047D100DF3843 /* AppDelegate.swift in Sources */,
 				A1BD2CB1260047D100DF3843 /* SceneDelegate.swift in Sources */,
 				A1BD2CC52600747000DF3843 /* InputViewController.swift in Sources */,
