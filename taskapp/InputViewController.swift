@@ -10,6 +10,10 @@ import RealmSwift
 import UserNotifications
 
 class InputViewController: UIViewController {
+    
+    
+    @IBOutlet weak var taskStatusSegmentControl: UISegmentedControl!
+    @IBOutlet weak var addCategoryButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -27,6 +31,11 @@ class InputViewController: UIViewController {
         textField.text = task.title
         textView.text = task.contents
         datePicker.date = task.date
+        
+        // UI更新
+        textView.layer.borderColor = UIColor.lightGray.cgColor
+        addCategoryButton.layer.borderColor = addCategoryButton.tintColor.cgColor
+        addCategoryButton.layer.cornerRadius = addCategoryButton.frame.width / 2
     }
     
     @objc func dismissKeyboard() {
