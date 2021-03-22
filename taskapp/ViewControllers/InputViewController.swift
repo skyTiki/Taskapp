@@ -17,8 +17,22 @@ class InputViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var categoryStackView: UIStackView!
     
     var task: Task!
+    var categoryList: [Category]? {
+        didSet {
+            if let categoryList = categoryList {
+                categoryList.forEach({ category in
+                    let label: UILabel = .init()
+                    label.text = category.name
+                    
+                    categoryStackView.addArrangedSubview(label)
+                })
+                
+            }
+        }
+    }
     
     let realm = try! Realm()
     
@@ -91,5 +105,18 @@ class InputViewController: UIViewController {
             }
         }
         
+    }
+    @IBAction func tappedAddCategoryButton(_ sender: Any) {
+        performSegue(withIdentifier: "categorySegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let categoryVC = segue.destination as! CategoryListViewController
+        categoryVC.delegate = self
+    }
+}
+extension InputViewController: CategoryListViewControllerDelegate {
+    func setCategoryList(_ categoryList: [Category]) {
+        self.categoryList = categoryList
     }
 }

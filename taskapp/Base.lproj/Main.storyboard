@@ -158,7 +158,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Xj3-f7-Tpl" kind="presentation" id="kO7-CP-GgP"/>
+                                    <action selector="tappedAddCategoryButton:" destination="E2V-U6-xja" eventType="touchUpInside" id="37V-6T-V3W"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="akm-X7-C8E">
@@ -210,10 +210,12 @@
                     <navigationItem key="navigationItem" id="m07-Wf-9W6"/>
                     <connections>
                         <outlet property="addCategoryButton" destination="21W-pu-Nlt" id="cdi-5o-B64"/>
+                        <outlet property="categoryStackView" destination="akm-X7-C8E" id="yCx-7U-hTX"/>
                         <outlet property="datePicker" destination="NH5-bj-4cA" id="Cql-je-4xq"/>
                         <outlet property="taskStatusSegmentControl" destination="KTX-cU-S2A" id="7n1-bI-6Mh"/>
                         <outlet property="textField" destination="ogn-07-Rpg" id="VcS-h7-jU4"/>
                         <outlet property="textView" destination="QPY-xO-oW2" id="Cfp-XN-mz0"/>
+                        <segue destination="Xj3-f7-Tpl" kind="presentation" identifier="categorySegue" id="kF5-Dd-B2R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Gr-9w-FDd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -280,6 +282,7 @@
                             <constraint firstItem="hAv-dW-ATU" firstAttribute="trailing" secondItem="esT-V0-3A6" secondAttribute="trailing" id="d2H-lW-quc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="kvl-GZ-OBG"/>
                     <connections>
                         <outlet property="categoryTableView" destination="esT-V0-3A6" id="CgL-RW-lmO"/>
                     </connections>

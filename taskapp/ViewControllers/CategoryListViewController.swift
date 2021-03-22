@@ -8,6 +8,11 @@
 import UIKit
 import RealmSwift
 
+protocol CategoryListViewControllerDelegate {
+    func setCategoryList(_ categoryList: [Category])
+}
+
+
 class CategoryListViewController: UIViewController {
 
     @IBOutlet weak var categoryTableView: UITableView!
@@ -16,6 +21,8 @@ class CategoryListViewController: UIViewController {
     // Realmから読み取り
     let realm = try! Realm()
     var categoryList: Results<Category>!
+    
+    var delegate: CategoryListViewControllerDelegate?
     
     // 設定されたCategoryを設定する
     var selectedCategoryList: [Category] = []
@@ -32,7 +39,7 @@ class CategoryListViewController: UIViewController {
     
     @IBAction func tappedSetCategory(_ sender: Any) {
         dismiss(animated: true, completion: {
-            
+            self.delegate?.setCategoryList(self.selectedCategoryList)
         })
     }
     
