@@ -23,20 +23,12 @@ class ViewController: UIViewController{
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        let tapGesture: UITapGestureRecognizer = .init(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tapGesture)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,6 +47,10 @@ class ViewController: UIViewController{
             
             inputViewController.task = task
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        categorySearchTextField.endEditing(true)
     }
 }
 
