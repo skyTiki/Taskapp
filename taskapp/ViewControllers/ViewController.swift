@@ -8,15 +8,17 @@
 import UIKit
 import RealmSwift
 import UserNotifications
+import iOSDropDown
 
 class ViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var categorySearchTextField: UIView!
+    @IBOutlet var categorySearchTextField: DropDown!
     
     // Realmのインスタンス作成
     let realm = try! Realm()
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+    let categoryList = try! Realm().objects(Category.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,16 @@ class ViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // カテゴリテキストボックスの設定
+        var categoryStringList: [String] {
+            var stringList: [String] = []
+            categoryList.forEach {
+                stringList.append($0.name)
+            }
+            return stringList
+        }
+        categorySearchTextField.optionArray = categoryStringList
+        
         
         tableView.reloadData()
     }
