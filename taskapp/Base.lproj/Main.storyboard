@@ -46,7 +46,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="カテゴリ検索" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="beA-Ry-2ta" customClass="DropDown" customModule="iOSDropDown">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="カテゴリ絞り込み" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="beA-Ry-2ta" customClass="DropDown" customModule="iOSDropDown">
                                 <rect key="frame" x="10" y="95" width="394" height="34"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>

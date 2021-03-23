@@ -27,6 +27,8 @@ class ViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
         
+        categorySearchTextField.text = "<全カテゴリー>"
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +46,7 @@ class ViewController: UIViewController{
         
         // カテゴリテキストボックスの設定
         var categoryStringList: [String] {
-            var stringList: [String] = [""]
+            var stringList: [String] = ["<全カテゴリー>"]
             categoryList.forEach {
                 stringList.append($0.name)
             }
@@ -53,8 +55,8 @@ class ViewController: UIViewController{
         categorySearchTextField.optionArray = categoryStringList
         categorySearchTextField.didSelect { (text, index, id) in
             self.filterdTaskArray = Array(self.taskArray)
-            // 空白が選ばれた場合
-            if text == "" {
+            // 全選択が選ばれた場合
+            if text == "<全カテゴリー>" {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.tableView.reloadData()
                 })
