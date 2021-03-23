@@ -24,13 +24,28 @@ class InputViewController: UIViewController {
         // カテゴリ一覧画面から選択された内容を画面に反映させる
         didSet {
             if let categoryList = categoryList {
+                
+                // StackViewの中身を空にする
+                categoryStackView.subviews.forEach {
+                    $0.removeFromSuperview()
+                }
+                // StackViewに値を設定
                 categoryList.forEach({ category in
                     let label: UILabel = .init()
                     label.text = category.name
+                    label.backgroundColor = .init(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
+                    label.layer.cornerRadius = 1
+                    label.clipsToBounds = true
+                    
                     
                     categoryStackView.addArrangedSubview(label)
                 })
                 
+                // 左寄せにするため２つ空のViewを挿入する
+                for _ in 1...2 {
+                    let view = UIView()
+                    categoryStackView.addArrangedSubview(view)
+                }
             }
         }
     }
