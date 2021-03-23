@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5qR-df-pPt">
-                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="136" width="414" height="726"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="kVt-RO-yWm" detailTextLabel="Rnp-94-APU" style="IBUITableViewCellStyleSubtitle" id="t49-UA-iF6">
@@ -46,22 +46,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カテゴリ検索" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZY1-ZN-1h1">
-                                <rect key="frame" x="5" y="93" width="404" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UIV-a1-oCC">
+                                <rect key="frame" x="5" y="96.5" width="264" height="32"/>
+                                <segments>
+                                    <segment title="これから"/>
+                                    <segment title="実行中"/>
+                                    <segment title="実行済"/>
+                                </segments>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="カテゴリ検索" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="beA-Ry-2ta" customClass="DropDown" customModule="iOSDropDown">
+                                <rect key="frame" x="279" y="95" width="130" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="ERW-Iz-4VA"/>
+                                </constraints>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="beA-Ry-2ta" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="3vQ-jw-kdz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5qR-df-pPt" secondAttribute="trailing" id="81O-Ng-i9z"/>
                             <constraint firstItem="5qR-df-pPt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FcR-Qv-EHm"/>
+                            <constraint firstItem="UIV-a1-oCC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="PC6-kX-b2O"/>
+                            <constraint firstItem="beA-Ry-2ta" firstAttribute="leading" secondItem="UIV-a1-oCC" secondAttribute="trailing" constant="10" id="RiY-fb-cyL"/>
+                            <constraint firstItem="UIV-a1-oCC" firstAttribute="centerY" secondItem="beA-Ry-2ta" secondAttribute="centerY" id="Saa-TC-0eW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="beA-Ry-2ta" secondAttribute="trailing" constant="5" id="XCs-Pc-yj8"/>
+                            <constraint firstItem="5qR-df-pPt" firstAttribute="top" secondItem="beA-Ry-2ta" secondAttribute="bottom" constant="7" id="XxK-DN-ceb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5qR-df-pPt" secondAttribute="bottom" id="c4m-hh-zPx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZY1-ZN-1h1" secondAttribute="trailing" constant="5" id="cIN-Hw-bdp"/>
-                            <constraint firstItem="ZY1-ZN-1h1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="cRc-IN-8Pw"/>
-                            <constraint firstItem="5qR-df-pPt" firstAttribute="top" secondItem="ZY1-ZN-1h1" secondAttribute="bottom" constant="5" id="pUW-zv-Kye"/>
-                            <constraint firstItem="ZY1-ZN-1h1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="vJs-MS-W4K"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="033-tz-Kvo">
@@ -72,7 +85,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="categorySearchTextField" destination="8bC-Xf-vdC" id="9al-0X-diS"/>
+                        <outlet property="categorySearchTextField" destination="beA-Ry-2ta" id="xtv-GE-TLP"/>
                         <outlet property="tableView" destination="5qR-df-pPt" id="jMv-3z-qMm"/>
                         <segue destination="E2V-U6-xja" kind="show" identifier="cellSegue" id="f1Y-aP-Cyv"/>
                     </connections>
