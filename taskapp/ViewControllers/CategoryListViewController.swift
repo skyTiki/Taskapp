@@ -22,10 +22,11 @@ class CategoryListViewController: UIViewController {
     let realm = try! Realm()
     var categoryList: Results<Category>!
     
+    
     var delegate: CategoryListViewControllerDelegate?
     
     // 設定されたCategoryを設定する
-    var selectedCategoryList: [Category] = []
+    var selectedCategoryList: [Category]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,8 @@ class CategoryListViewController: UIViewController {
         
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
+        
+        
         
     }
     
@@ -88,6 +91,12 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         cell.textLabel?.text = categoryList[indexPath.row].name
+        // すでに選択済みの場合はチェックマークをつける
+        if selectedCategoryList.contains(Array(categoryList)[indexPath.row]) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
     }
     
@@ -106,7 +115,6 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        print(selectedCategoryList)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

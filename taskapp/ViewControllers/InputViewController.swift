@@ -143,6 +143,7 @@ class InputViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let categoryVC = segue.destination as! CategoryListViewController
+        categoryVC.selectedCategoryList = categoryList
         categoryVC.delegate = self
     }
 }
