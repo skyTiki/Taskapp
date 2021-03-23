@@ -18,19 +18,35 @@ class InputViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var categoryStackView: UIStackView!
+    @IBOutlet weak var registTaskButton: UIButton!
     
     var task: Task!
     var categoryList: [Category]? {
         // カテゴリ一覧画面から選択された内容を画面に反映させる
         didSet {
             if let categoryList = categoryList {
+                
+                // StackViewの中身を空にする
+                categoryStackView.subviews.forEach {
+                    $0.removeFromSuperview()
+                }
+                // StackViewに値を設定
                 categoryList.forEach({ category in
                     let label: UILabel = .init()
                     label.text = category.name
+                    label.backgroundColor = .init(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
+                    label.layer.cornerRadius = 1
+                    label.clipsToBounds = true
+                    
                     
                     categoryStackView.addArrangedSubview(label)
                 })
                 
+                // 左寄せにするため２つ空のViewを挿入する
+                for _ in 1...2 {
+                    let view = UIView()
+                    categoryStackView.addArrangedSubview(view)
+                }
             }
         }
     }
@@ -52,6 +68,7 @@ class InputViewController: UIViewController {
         textField.text = task.title
         textView.text = task.contents
         datePicker.date = task.date
+        categoryList = Array(task.categoryList)
         
     }
     
@@ -60,25 +77,41 @@ class InputViewController: UIViewController {
         textView.layer.borderColor = UIColor.lightGray.cgColor
         addCategoryButton.layer.borderColor = addCategoryButton.tintColor.cgColor
         addCategoryButton.layer.cornerRadius = addCategoryButton.frame.width / 2
+        
+        registTaskButton.layer.borderColor = UIColor.clear.cgColor
+        registTaskButton.layer.cornerRadius = registTaskButton.frame.height / 2
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
+    // カテゴリ一覧画面に遷移
+    @IBAction func tappedAddCategoryButton(_ sender: Any) {
+        performSegue(withIdentifier: "categorySegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let categoryVC = segue.destination as! CategoryListViewController
+        categoryVC.selectedCategoryList = categoryList
+        categoryVC.delegate = self
+    }
+    
+    @IBAction func tappedRegistTaskButton(_ sender: Any) {
         // Taskを書き込む
         try! realm.write {
             task.title = textField.text!
             task.contents = textView.text!
             task.date = datePicker.date
+            task.categoryList.removeAll()
+            task.categoryList.append(objectsIn: categoryList ?? [])
             
             realm.add(task, update: .modified)
         }
         
         setNotification(task: task)
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     // 通知の設定
@@ -104,7 +137,7 @@ class InputViewController: UIViewController {
         // 通知の登録
         let center = UNUserNotificationCenter.current()
         center.add(request) { (error) in
-            print(error ?? "ローカル通知登録OK")
+            // print(error ?? "ローカル通知登録OK")
         }
         
         // 未通知のローカル通知一覧　ログ集力
@@ -118,15 +151,7 @@ class InputViewController: UIViewController {
         
     }
     
-    // カテゴリ一覧画面に遷移
-    @IBAction func tappedAddCategoryButton(_ sender: Any) {
-        performSegue(withIdentifier: "categorySegue", sender: nil)
-    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let categoryVC = segue.destination as! CategoryListViewController
-        categoryVC.delegate = self
-    }
 }
 // デリゲート（選択されたカテゴリ一覧を取得）
 extension InputViewController: CategoryListViewControllerDelegate {
