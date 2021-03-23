@@ -125,10 +125,11 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="NH5-bj-4cA">
-                                <rect key="frame" x="80.5" y="331" width="343.5" height="60"/>
+                                <rect key="frame" x="80.5" y="331" width="323.5" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Axa-wm-Wui"/>
                                 </constraints>
+                                <locale key="locale" localeIdentifier="ja"/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVN-F9-h1X">
                                 <rect key="frame" x="10" y="401" width="65.5" height="19.5"/>
@@ -172,7 +173,7 @@
                                     <constraint firstAttribute="width" constant="160" id="AlQ-bz-o1H"/>
                                     <constraint firstAttribute="height" constant="45" id="Hij-2Z-S1K"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <state key="normal" title="登録">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -203,7 +204,7 @@
                             <constraint firstItem="8LE-5c-Ijm" firstAttribute="trailing" secondItem="QPY-xO-oW2" secondAttribute="trailing" constant="10" id="akf-Dl-GA8"/>
                             <constraint firstItem="NH5-bj-4cA" firstAttribute="top" secondItem="QPY-xO-oW2" secondAttribute="bottom" constant="10" id="gFD-sl-7yH"/>
                             <constraint firstItem="cC2-m9-jNB" firstAttribute="top" secondItem="8LE-5c-Ijm" secondAttribute="top" constant="10" id="jlP-Wk-pZ0"/>
-                            <constraint firstItem="NH5-bj-4cA" firstAttribute="trailing" secondItem="8LE-5c-Ijm" secondAttribute="trailing" constant="10" id="k2j-xf-hUE"/>
+                            <constraint firstItem="NH5-bj-4cA" firstAttribute="trailing" secondItem="8LE-5c-Ijm" secondAttribute="trailing" constant="-10" id="k2j-xf-hUE"/>
                             <constraint firstItem="NH5-bj-4cA" firstAttribute="leading" secondItem="E6s-a8-OJC" secondAttribute="trailing" constant="5" id="kCl-Fl-myc"/>
                             <constraint firstItem="ogn-07-Rpg" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="mTf-Sk-E3q"/>
                             <constraint firstItem="cC2-m9-jNB" firstAttribute="leading" secondItem="8LE-5c-Ijm" secondAttribute="leading" constant="10" id="rYy-cN-hET"/>
