@@ -67,6 +67,7 @@ class InputViewController: UIViewController {
         textField.text = task.title
         textView.text = task.contents
         datePicker.date = task.date
+        categoryList = Array(task.categoryList)
         
     }
     
@@ -89,6 +90,8 @@ class InputViewController: UIViewController {
             task.title = textField.text!
             task.contents = textView.text!
             task.date = datePicker.date
+            task.categoryList.removeAll()
+            task.categoryList.append(objectsIn: categoryList ?? [])
             
             realm.add(task, update: .modified)
         }
