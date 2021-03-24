@@ -131,8 +131,22 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
             let category = categoryList[indexPath.row]
             
             try! realm.write {
+                
+                // 削除するカテゴリに関連するTaskの情報を修正（そのTaskから該当のCategoryの情報を削除する）
+                let taskArray = realm.objects(Task.self)
+                taskArray.forEach { task in
+                    if task.categoryList.contains(category) {
+                        guard let categoryIndex = task.categoryList.firstIndex(of: category) else { return }
+                        task.categoryList.remove(at: categoryIndex)
+                    }
+                }
+                
+                selectedCategoryList.removeAll(where: { $0.id == category.id })
+                
                 realm.delete(category)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+
+                
             }
         }
     }
