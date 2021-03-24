@@ -22,7 +22,7 @@ class InputViewController: UIViewController {
     
     var task: Task!
     var categoryList: [Category]? {
-        // カテゴリ一覧画面から選択された内容を画面に反映させる
+        // タスクに登録されたカテゴリ情報、カテゴリー一覧画面で選択された情報を画面に反映させる
         didSet {
             if let categoryList = categoryList {
                 
@@ -30,19 +30,19 @@ class InputViewController: UIViewController {
                 categoryStackView.subviews.forEach {
                     $0.removeFromSuperview()
                 }
+                
                 // StackViewに値を設定
                 categoryList.forEach({ category in
                     let label: UILabel = .init()
                     label.text = category.name
                     label.backgroundColor = .init(red: 245 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
-                    label.layer.cornerRadius = 1
+                    label.layer.cornerRadius = 5
                     label.clipsToBounds = true
-                    
                     
                     categoryStackView.addArrangedSubview(label)
                 })
                 
-                // 左寄せにするため２つ空のViewを挿入する
+                // カテゴリ情報を左寄せにするため２つ空のViewを挿入する
                 for _ in 1...2 {
                     let view = UIView()
                     categoryStackView.addArrangedSubview(view)
@@ -73,8 +73,8 @@ class InputViewController: UIViewController {
     }
     
     private func modifyUI() {
-        // UI更新
         textView.layer.borderColor = UIColor.lightGray.cgColor
+        
         addCategoryButton.layer.borderColor = addCategoryButton.tintColor.cgColor
         addCategoryButton.layer.cornerRadius = addCategoryButton.frame.width / 2
         
@@ -111,6 +111,7 @@ class InputViewController: UIViewController {
         
         setNotification(task: task)
         
+        // タスク一覧画面に戻る
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -153,7 +154,7 @@ class InputViewController: UIViewController {
     
     
 }
-// デリゲート（選択されたカテゴリ一覧を取得）
+// デリゲート（カテゴリ選択ページで選ばれたカテゴリ一覧を取得）
 extension InputViewController: CategoryListViewControllerDelegate {
     func setCategoryList(_ categoryList: [Category]) {
         self.categoryList = categoryList

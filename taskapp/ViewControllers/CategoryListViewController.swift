@@ -16,7 +16,6 @@ protocol CategoryListViewControllerDelegate {
 class CategoryListViewController: UIViewController {
 
     @IBOutlet weak var categoryTableView: UITableView!
-    @IBOutlet weak var categoryAddView: UIView!
     
     // Realmから読み取り
     let realm = try! Realm()
@@ -61,14 +60,19 @@ class CategoryListViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
             // 入力されたテキストをRealmに追加
             if let categoryName = alertTextField?.text {
+                
                 let category: Category = .init()
                 try! self.realm.write {
+                    // name
                     category.name = categoryName
+                    
+                    // id
                     if self.categoryList.count == 0 {
                         category.id = 0
                     } else {
                         category.id = self.categoryList.max(ofProperty: "id")! + 1
                     }
+                    
                     self.realm.add(category)
                     
                     self.categoryTableView.reloadData()
@@ -77,10 +81,7 @@ class CategoryListViewController: UIViewController {
         }))
         
         self.present(alert, animated: true, completion: nil)
- 
     }
-    
-    
 }
 
 extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -91,16 +92,19 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         cell.textLabel?.text = categoryList[indexPath.row].name
-        // すでに選択済みの場合はチェックマークをつける
+        
+        // 該当タスクが既にそのカテゴリを選択済みの場合、チェックマークをつける
         if selectedCategoryList.contains(Array(categoryList)[indexPath.row]) {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
         }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // セルの情報と該当のカテゴリ情報を取得する
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         guard let selectedCategory: Category = categoryList.first(where: { $0.name == cell.textLabel?.text }) else { return }
         
@@ -113,6 +117,7 @@ extension CategoryListViewController: UITableViewDelegate, UITableViewDataSource
             selectedCategoryList.removeAll(where: { $0 == selectedCategory })
         }
         
+        // UI制御　選択状態を解除する
         tableView.deselectRow(at: indexPath, animated: true)
         
     }

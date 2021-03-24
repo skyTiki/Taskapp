@@ -15,10 +15,14 @@ class ViewController: UIViewController{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var categorySearchTextField: DropDown!
     
+    let categoryListFirstIndexText = "<全カテゴリー>"
+    
     // Realmのインスタンス作成
     let realm = try! Realm()
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
     let categoryList = try! Realm().objects(Category.self)
+    
+    // 画面表示用のTaskの配列
     var filterdTaskArray: [Task]!
     
     override func viewDidLoad() {
@@ -27,15 +31,28 @@ class ViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
         
-        categorySearchTextField.text = "<全カテゴリー>"
+        //カテゴリ検索バーの初期値
+        categorySearchTextField.text = categoryListFirstIndexText
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // カテゴリ検索バーの設定（カテゴリ新規追加に対応できるようviewWillAppearで定義）
+        setupFilterdTextField()
+        // タスク登録・更新されて戻ってきた場合に対応できるよう、テーブルを更新する。
+        filterTaskReloadTableView()
+        
+       
+    }
+    
+    private func filterTaskReloadTableView() {
+        
+        // 最初に全量タスクを戻す
         self.filterdTaskArray = Array(self.taskArray)
         
+        // カテゴリ検索バーが設定されていない、もしくは全カテゴリー以外の場合
         if categorySearchTextField.selectedIndex != nil && categorySearchTextField.selectedIndex != Optional(0) {
             let category: Category = Array(self.categoryList)[categorySearchTextField.selectedIndex! - 1]
             
@@ -44,37 +61,40 @@ class ViewController: UIViewController{
             })
         }
         
-        // カテゴリテキストボックスの設定
+        tableView.reloadData()
+    }
+    
+    private func setupFilterdTextField() {
+        
+        // カテゴリ一覧の設定
         var categoryStringList: [String] {
-            var stringList: [String] = ["<全カテゴリー>"]
+            var stringList: [String] = [categoryListFirstIndexText]
             categoryList.forEach {
                 stringList.append($0.name)
             }
             return stringList
         }
         categorySearchTextField.optionArray = categoryStringList
+        
+        // カテゴリーがタップされたときの挙動
         categorySearchTextField.didSelect { (text, index, id) in
             self.filterdTaskArray = Array(self.taskArray)
-            // 全選択が選ばれた場合
-            if text == "<全カテゴリー>" {
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.tableView.reloadData()
-                })
+            // 全カテゴリーが選ばれた場合
+            if text == self.categoryListFirstIndexText {
+                self.tableView.reloadData()
                 return
             }
             
+            // 選択さてたカテゴリーを取得
             let category: Category = Array(self.categoryList).first(where: { $0.name == text })!
-
+            // 該当のカテゴリーでフィルターする。（当てはまらないレコードを配列から削除）
             self.filterdTaskArray.removeAll(where: {
                 return !$0.categoryList.contains(category)
             })
             
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tableView.reloadData()
-            })
+            self.tableView.reloadData()
+            
         }
-        
-        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,6 +115,7 @@ class ViewController: UIViewController{
         }
     }
     
+    // 画面がスクロールされたらテキストボックスを閉じる
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         categorySearchTextField.endEditing(true)
     }
@@ -109,15 +130,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
         let task = filterdTaskArray[indexPath.row]
         
         cell.textLabel?.text = task.title
         
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        
         cell.detailTextLabel?.text = formatter.string(from: task.date)
         
         return cell
