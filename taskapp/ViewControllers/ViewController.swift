@@ -88,7 +88,7 @@ class ViewController: UIViewController{
             
             // 選択さてたカテゴリーを取得
             let category: Category = Array(self.categoryList).first(where: { $0.name == text })!
-            // 該当のカテゴリーでフィルターする。（当てはまらないレコードを配列から削除）
+            // 該当のカテゴリーでフィルターする。
             self.filterdTaskArray = Array(self.taskArray).filter({
                 $0.categoryList.contains(category)
             })
